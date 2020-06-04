@@ -1,0 +1,114 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://theme.tres" type="Theme" id=1]
+[ext_resource path="res://GraphEdit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PopupDialog.gd" type="Script" id=3]
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GraphEdit" parent="." instance=ExtResource( 2 )]
+popup = NodePath("../PopupDialog")
+
+[node name="PopupDialog" type="PopupDialog" parent="."]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -267.0
+margin_top = -284.0
+margin_right = 186.0
+margin_bottom = -123.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+graph_edit = NodePath("../GraphEdit")
+
+[node name="MarginContainer" type="MarginContainer" parent="PopupDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupDialog/MarginContainer"]
+margin_right = 433.0
+margin_bottom = 141.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Save" type="Button" parent="PopupDialog/MarginContainer/VBoxContainer"]
+margin_right = 433.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+text = "Save"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PopupDialog/MarginContainer/VBoxContainer"]
+margin_top = 33.0
+margin_right = 433.0
+margin_bottom = 66.0
+
+[node name="Label" type="Label" parent="PopupDialog/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_top = 5.0
+margin_right = 77.0
+margin_bottom = 28.0
+text = "Title: "
+
+[node name="TextEdit" type="LineEdit" parent="PopupDialog/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 81.0
+margin_right = 433.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+placeholder_text = "Title"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PopupDialog/MarginContainer/VBoxContainer"]
+margin_top = 70.0
+margin_right = 433.0
+margin_bottom = 99.0
+
+[node name="Label" type="Label" parent="PopupDialog/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_top = 3.0
+margin_right = 176.0
+margin_bottom = 26.0
+text = "Color frame:    "
+
+[node name="ColorFrame" type="ColorPickerButton" parent="PopupDialog/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 180.0
+margin_right = 433.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+color = Color( 0.333333, 0.113725, 0.113725, 1 )
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PopupDialog/MarginContainer/VBoxContainer"]
+margin_top = 103.0
+margin_right = 433.0
+margin_bottom = 132.0
+
+[node name="Label" type="Label" parent="PopupDialog/MarginContainer/VBoxContainer/HBoxContainer3"]
+margin_top = 3.0
+margin_right = 176.0
+margin_bottom = 26.0
+text = "Color selected: "
+
+[node name="ColorSelected" type="ColorPickerButton" parent="PopupDialog/MarginContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 180.0
+margin_right = 433.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+color = Color( 0.333333, 0.113725, 0.113725, 1 )
+[connection signal="pressed" from="PopupDialog/MarginContainer/VBoxContainer/Save" to="PopupDialog" method="_on_Save_pressed"]
+[connection signal="text_changed" from="PopupDialog/MarginContainer/VBoxContainer/HBoxContainer/TextEdit" to="PopupDialog" method="_on_TextEdit_text_changed"]
+[connection signal="color_changed" from="PopupDialog/MarginContainer/VBoxContainer/HBoxContainer2/ColorFrame" to="PopupDialog" method="_on_ColorFrame_color_changed"]
+[connection signal="color_changed" from="PopupDialog/MarginContainer/VBoxContainer/HBoxContainer3/ColorSelected" to="PopupDialog" method="_on_ColorSelected_color_changed"]

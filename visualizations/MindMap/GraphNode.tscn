@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://theme.tres" type="Theme" id=1]
+[ext_resource path="res://styleboxflat.tres" type="StyleBox" id=2]
+[ext_resource path="res://GraphNode.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 25.0
+content_margin_right = 25.0
+content_margin_top = 27.0
+content_margin_bottom = 3.0
+bg_color = Color( 0.25098, 0.25098, 0.25098, 1 )
+border_width_left = 2
+border_width_top = 24
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.890196, 0.890196, 0.890196, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="GraphNode" type="GraphNode"]
+margin_right = 318.0
+margin_bottom = 212.0
+rect_scale = Vector2( 1.00564, 1 )
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+custom_styles/frame = ExtResource( 2 )
+custom_styles/selectedframe = SubResource( 1 )
+custom_colors/resizer_color = Color( 1, 1, 1, 1 )
+custom_constants/port_offset = 14
+custom_constants/title_offset = 23
+title = "Title"
+show_close = true
+resizable = true
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextEdit" type="TextEdit" parent="."]
+margin_left = 25.0
+margin_top = 27.0
+margin_right = 293.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 0, 20 )
+[connection signal="close_request" from="." to="." method="_on_close_request"]
+[connection signal="gui_input" from="." to="." method="_on_GraphNode_gui_input"]
+[connection signal="resize_request" from="." to="." method="_on_resize_request"]
+[connection signal="focus_entered" from="TextEdit" to="." method="_on_TextEdit_focus_entered"]
+[connection signal="text_changed" from="TextEdit" to="." method="_on_TextEdit_text_changed"]
