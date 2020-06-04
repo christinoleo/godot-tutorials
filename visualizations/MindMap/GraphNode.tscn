@@ -51,6 +51,7 @@ margin_top = 27.0
 margin_right = 293.0
 margin_bottom = 47.0
 rect_min_size = Vector2( 0, 20 )
+wrap_enabled = true
 [connection signal="close_request" from="." to="." method="_on_close_request"]
 [connection signal="gui_input" from="." to="." method="_on_GraphNode_gui_input"]
 [connection signal="resize_request" from="." to="." method="_on_resize_request"]

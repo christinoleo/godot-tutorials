@@ -85,6 +85,7 @@ func _on_GraphEdit_connection_to_empty(from, from_slot, release_position):
 	var new_node = graph_node.instance()
 	new_node.set_offset(release_position-Vector2(0, new_node.rect_size.y/2))
 	add_child(new_node)
+	new_node.name = String(randi())
 	connect_node(from, from_slot, new_node.name, 0)
 	save()
 
@@ -93,6 +94,7 @@ func _on_GraphEdit_connection_from_empty(to, to_slot, release_position):
 	var new_node = graph_node.instance()
 	new_node.set_offset(release_position-Vector2(new_node.rect_size.x, new_node.rect_size.y/2))
 	add_child(new_node)
+	new_node.name = String(randi())
 	connect_node(new_node.name, 0, to, to_slot)
 	save()
 
@@ -124,6 +126,7 @@ func _on_GraphEdit_paste_nodes_request():
 		new_c.set_selected(false)
 		new_c.set_offset(get_viewport().get_mouse_position()-Vector2(new_c.rect_size.x, 0)/2)
 		add_child(new_c)
+		new_c.name = String(randi())
 	save()
 
 
@@ -134,6 +137,7 @@ func _on_GraphEdit_duplicate_nodes_request():
 			new_c.set_selected(false)
 			new_c.set_offset(get_viewport().get_mouse_position()-Vector2(new_c.rect_size.x, 0)/2)
 			add_child(new_c)
+			new_c.name = String(randi())
 	save()
 
 

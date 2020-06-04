@@ -24,8 +24,6 @@ func get_data():
 	"selected_frame_color": {"r": selected_frame_color.r, "g": selected_frame_color.g, "b": selected_frame_color.b}}
 
 func set_data(data):
-	print(get("custom_styles/frame").get_border_color())
-	print(to_json(get("custom_styles/frame").get_border_color()))
 	text_edit.text = data["text"]
 	set_title(data["title"])	
 	set_border_color(data["frame_color"], data["selected_frame_color"])	
