@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ScatterPlot2.gd" type="Script" id=1]
+
+[node name="ScatterPlot2" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+values = PoolVector2Array( 2, 1, 2, 2, 5, 2, 0, 3 )
+color = Color( 0.545098, 0.270588, 0.270588, 1 )
+size = 50
+shape = "rect"
+animate = false
+
+[node name="Tween" type="Tween" parent="."]
