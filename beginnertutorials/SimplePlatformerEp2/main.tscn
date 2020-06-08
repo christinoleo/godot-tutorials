@@ -1,0 +1,225 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://mainchar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/nonground.png" type="Texture" id=3]
+[ext_resource path="res://sprites/ground.png" type="Texture" id=4]
+[ext_resource path="res://goal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://main.gd" type="Script" id=6]
+[ext_resource path="res://enemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/back1.png" type="Texture" id=8]
+[ext_resource path="res://sprites/back3.png" type="Texture" id=9]
+[ext_resource path="res://sprites/back2.png" type="Texture" id=10]
+[ext_resource path="res://sprites/back4.png" type="Texture" id=11]
+[ext_resource path="res://deathpit.tscn" type="PackedScene" id=12]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
+
+[sub_resource type="TileSet" id=4]
+0/name = "icon.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "nonground.png 1"
+1/texture = ExtResource( 3 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 16, 16 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 2 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "ground.png 2"
+2/texture = ExtResource( 4 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 16, 16 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 3 )
+2/shape_one_way = false
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+
+[node name="main" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="youwin" type="Label" parent="CanvasLayer/CenterContainer"]
+visible = false
+margin_left = 484.0
+margin_top = 293.0
+margin_right = 540.0
+margin_bottom = 307.0
+text = "You Win!"
+
+[node name="gameover" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+visible = false
+margin_left = 475.0
+margin_top = 281.0
+margin_right = 548.0
+margin_bottom = 319.0
+
+[node name="label" type="Label" parent="CanvasLayer/CenterContainer/gameover"]
+margin_right = 73.0
+margin_bottom = 14.0
+text = "GameOver!"
+
+[node name="Button" type="Button" parent="CanvasLayer/CenterContainer/gameover"]
+margin_top = 18.0
+margin_right = 73.0
+margin_bottom = 38.0
+text = "Restart"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_enable = true
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="back4" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( 845.239, 204.005 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 11 )
+
+[node name="back5" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( -429.432, 204.803 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 11 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="back3" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( 782.661, 278.263 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 9 )
+
+[node name="back4" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( -434.874, 180.316 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 9 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.2, 0.1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="back2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( -421.27, 368.048 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 10 )
+
+[node name="back3" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 838.436, 425.184 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 10 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="back1" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -422.631, 327.237 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 8 )
+
+[node name="back2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 849.319, 324.516 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 8 )
+
+[node name="mainchar" parent="." instance=ExtResource( 2 )]
+position = Vector2( 213.893, 323.095 )
+
+[node name="Camera2D" type="Camera2D" parent="mainchar"]
+current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = SubResource( 4 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 3
+collision_mask = 3
+format = 1
+tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, 21, 1, 0, 22, 1, 0, 23, 1, 0, 24, 1, 0, 25, 1, 0, 26, 1, 0, 27, 1, 0, 28, 1, 0, 29, 1, 0, 30, 1, 0, 31, 1, 0, 32, 1, 0, 33, 1, 0, 34, 1, 0, 35, 1, 0, 36, 1, 0, 37, 1, 0, 65536, 1, 0, 65573, 1, 0, 131072, 1, 0, 131109, 1, 0, 196608, 1, 0, 196645, 1, 0, 262144, 1, 0, 262181, 1, 0, 327680, 1, 0, 327717, 1, 0, 393216, 1, 0, 393253, 1, 0, 458752, 1, 0, 458789, 1, 0, 524288, 1, 0, 524325, 1, 0, 589824, 1, 0, 589861, 1, 0, 655360, 1, 0, 655397, 1, 0, 720896, 1, 0, 720933, 1, 0, 786432, 1, 0, 786456, 2, 0, 786457, 2, 0, 786469, 1, 0, 851968, 1, 0, 851992, 1, 0, 851993, 1, 0, 852005, 1, 0, 917504, 1, 0, 917528, 1, 0, 917529, 1, 0, 917541, 1, 0, 983040, 1, 0, 983064, 1, 0, 983065, 1, 0, 983077, 1, 0, 1048576, 1, 0, 1048600, 1, 0, 1048601, 1, 0, 1048613, 1, 0, 1114112, 1, 0, 1114136, 1, 0, 1114137, 1, 0, 1114149, 1, 0, 1179648, 1, 0, 1179649, 2, 0, 1179650, 2, 0, 1179651, 2, 0, 1179652, 2, 0, 1179653, 2, 0, 1179654, 2, 0, 1179655, 2, 0, 1179656, 2, 0, 1179657, 2, 0, 1179658, 2, 0, 1179659, 2, 0, 1179660, 2, 0, 1179661, 2, 0, 1179662, 2, 0, 1179663, 2, 0, 1179664, 2, 0, 1179665, 2, 0, 1179666, 2, 0, 1179667, 2, 0, 1179668, 2, 0, 1179669, 2, 0, 1179670, 2, 0, 1179671, 2, 0, 1179672, 1, 0, 1179673, 1, 0, 1179674, 2, 0, 1179675, 2, 0, 1179676, 2, 0, 1179677, 2, 0, 1179682, 2, 0, 1179683, 2, 0, 1179684, 2, 0, 1179685, 1, 0 )
+
+[node name="goal" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1143.22, 570.928 )
+scale = Vector2( 3, 3 )
+
+[node name="enemy" parent="." instance=ExtResource( 7 )]
+position = Vector2( 691.315, 526.157 )
+
+[node name="deathpit" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1020.5, 684.662 )
+[connection signal="pressed" from="CanvasLayer/CenterContainer/gameover/Button" to="." method="_on_restart_pressed"]
+[connection signal="death" from="mainchar" to="." method="_on_mainchar_death"]
+[connection signal="body_entered" from="goal" to="." method="_on_goal_body_entered"]
+[connection signal="death_detected" from="deathpit" to="." method="_on_deathpit_death_detected"]
+[connection signal="fall_detected" from="deathpit" to="." method="_on_deathpit_fall_detected"]
