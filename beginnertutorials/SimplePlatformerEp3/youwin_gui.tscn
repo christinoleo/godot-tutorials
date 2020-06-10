@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://youwin_gui.gd" type="Script" id=1]
+
+[node name="youwin" type="VBoxContainer"]
+margin_left = 462.0
+margin_top = 284.0
+margin_right = 562.0
+margin_bottom = 316.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="."]
+margin_right = 100.0
+margin_bottom = 14.0
+text = "You Win!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_top = 18.0
+margin_right = 100.0
+margin_bottom = 32.0
+
+[node name="label" type="Label" parent="HBoxContainer"]
+margin_right = 88.0
+margin_bottom = 14.0
+text = "Restarting in: "
+
+[node name="labeltimer" type="Label" parent="HBoxContainer"]
+margin_left = 92.0
+margin_right = 100.0
+margin_bottom = 14.0
+text = "5"
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
